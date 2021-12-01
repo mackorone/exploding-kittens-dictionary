@@ -33,12 +33,17 @@ async def generate_word_list(output: str, chunk_size: int) -> None:
         all_words = {word for set_ in url_to_words.values() for word in set_}
         sorted_words = sorted(all_words)
 
+        # Get the smallest multiple of chunk_size less than len(sorted_words)
+        numerator_width = len(
+            str(len(sorted_words) - ((len(sorted_words) - 1) % chunk_size))
+        )
+
         # Filter invalid words
         logger.info(f"Checking the validity of all {len(sorted_words)} words...")
         valid_words: Set[str] = set()
         with open(output, "w") as f:
             for i in range(0, len(sorted_words), chunk_size):
-                numerator = str(i).rjust(len(str(len(sorted_words) - chunk_size)))
+                numerator = str(i).rjust(numerator_width)
                 progress_fraction = i / len(sorted_words)
                 progress_percent = f"{progress_fraction:.0%}".rjust(3)
                 logger.info(f"{numerator} / {len(sorted_words)} ({progress_percent})")

@@ -4,10 +4,10 @@
 
 ## Introduction
 
-In November of 2021, I sent the following email to `support@explodingkittens.com`:
+In November of 2021, I sent the following email to support@explodingkittens.com:
 
 > Hi! My name is Mack. I'm a software developer and I'd like to build a bot to
-> play A Little Wordy. Before I can do that, I need a list of words that are
+> play *A Little Wordy*. Before I can do that, I need a list of words that are
 > considered valid. As far as I can tell, the
 > [website](https://ek.explodingkittens.com/dictionary) only provides an
 > endpoint for checking the validity of individual words - there's no exhaustive
@@ -24,7 +24,7 @@ Hence this repository.
 
 ## How it works
 
-The Python script fetches existing lists of English words. It normalizes and
+The script fetches existing lists of English words. It normalizes and
 deduplicates the results, and then queries the Exploding Kittens Dictionary API
 to determine which words are valid. Results are written to a file specified on
 the command line.
